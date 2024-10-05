@@ -4,6 +4,10 @@ export const idNumberRequestSchema = z.object({
   params: z.object({ id: z.coerce.number().int().positive() }),
 });
 
+export const idStringRequestSchema = z.object({
+  params: z.object({ id: z.coerce.string()})
+})
+
 export const idUUIDRequestSchema = z.object({
   params: z.object({ id: z.string().uuid() }),
 });
@@ -14,6 +18,11 @@ export const pagingRequestSchema = z.object({
     skip: z.coerce.number().int().nonnegative(),
   }),
 });
+
+export const searchRequestSchema = z.object({
+  params: z.object({ query: z.coerce.string().email()})
+
+})
 
 export type Item = {
   id: number;
